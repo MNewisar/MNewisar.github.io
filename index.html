@@ -1,338 +1,201 @@
-export default function VisibleWomenVisibleSpaces() {
-  return (
-    <div className="bg-[#f4efe6] text-[#1a1a1a] min-h-screen overflow-x-hidden">
-      {/* NAV */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#f4efe6]/90 backdrop-blur-xl border-b border-black/10 px-6 lg:px-12 py-5 flex justify-between items-center">
-        <div>
-          <div className="font-black text-lg tracking-tight leading-none">
-            <div>VWVS</div>
-            <div className="text-[#de8d62]">VISIBLE WOMEN</div>
-            <div>VISIBLE SPACES</div>
-          </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visible Women, Visible Spaces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-        <div className="hidden lg:flex gap-8 uppercase text-[11px] tracking-[0.25em] font-semibold">
-          <a href="#about">About</a>
-          <a href="#teaching">Teaching</a>
-          <a href="#research">Research</a>
-          <a href="#engagement">Engagement</a>
-          <a href="#projects">Projects</a>
-          <a href="#resources">Resources</a>
-          <a href="#contact">Contact</a>
-        </div>
+<body>
+  <header class="site-header">
+    <a href="#top" class="logo" aria-label="Visible Women Visible Spaces Home">
+      <span>VWVS</span>
+      <span>Visible Women</span>
+      <span>Visible Spaces</span>
+    </a>
 
-        <button className="border border-black rounded-full px-5 py-3 uppercase text-[11px] tracking-[0.2em] hover:bg-black hover:text-white transition-all">
-          Get Involved
-        </button>
-      </nav>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#research">Research</a>
+      <a href="#engagement">Engagement</a>
+      <a href="#projects">Projects</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-      {/* HERO */}
-      <section className="relative min-h-screen pt-36 px-6 lg:px-12 pb-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-6">
-              Feminist Urbanism · Architecture · Art Psychotherapy
-            </p>
+    <a href="#contact" class="nav-cta">Get involved</a>
+  </header>
 
-            <h1 className="font-serif text-6xl md:text-8xl leading-[0.85] tracking-tight mb-8">
-              Cities hold
-              <br />
-              women’s stories.
-              <br />
-              <span className="text-[#de8d62]">We make them visible.</span>
-            </h1>
-
-            <p className="text-lg text-black/70 leading-relaxed max-w-xl mb-10">
-              Visible Women, Visible Spaces is a collaborative platform exploring
-              women’s experiences of public open spaces through architecture,
-              walking methods, participatory mapping, creative practice and
-              community engagement.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-black text-white px-8 py-4 rounded-full uppercase tracking-[0.2em] text-xs">
-                Explore Projects
-              </button>
-
-              <button className="border border-black px-8 py-4 rounded-full uppercase tracking-[0.2em] text-xs">
-                Workshops
-              </button>
-            </div>
-          </div>
-
-          {/* COLLAGE */}
-          <div className="relative min-h-[760px]">
-            <div className="absolute top-0 left-0 w-[70%] h-[420px] bg-[#ded7cd] rounded-[40px] rotate-[-3deg]"></div>
-
-            <img
-              src="/mnt/data/ChatGPT Image May 9, 2026, 03_29_20 PM.png"
-              className="absolute top-8 left-8 w-[58%] h-[500px] object-cover rounded-[35px] shadow-2xl rotate-[-3deg] border-[10px] border-white"
-            />
-
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-              className="absolute right-0 top-52 w-[48%] h-[340px] object-cover rounded-[35px] shadow-2xl rotate-[4deg]"
-            />
-
-            <div className="absolute bottom-28 left-0 bg-[#de8d62] text-white p-6 rounded-[25px] rotate-[-5deg] shadow-xl max-w-[260px]">
-              <p className="text-2xl leading-tight font-serif">
-                “Safety is emotional,
-                spatial and deeply personal.”
-              </p>
-            </div>
-
-            <div className="absolute bottom-0 right-10 bg-[#f1d85b] p-6 rounded-[25px] rotate-[4deg] shadow-xl max-w-[260px]">
-              <p className="text-2xl leading-tight font-serif text-black">
-                Walking.
-                Mapping.
-                Listening.
-                Reimagining.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="py-28 px-6 lg:px-12 bg-white border-t border-black/10">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div>
-            <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-              About
-            </p>
-
-            <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-              Architecture meets art psychotherapy.
-            </h2>
-
-            <p className="text-xl text-black/70 leading-relaxed mb-8">
-              The platform combines architecture, feminist urban research,
-              participatory methods and therapeutic creative practice to explore
-              how women experience public space emotionally and spatially.
-            </p>
-
-            <div className="bg-[#f4efe6] rounded-[35px] p-8 border border-black/10 rotate-[-1deg]">
-              <p className="text-black/70 leading-relaxed text-lg">
-                Through workshops, walking conversations, installations,
-                behavioural mapping and storytelling, we create spaces where
-                women’s lived experiences influence urban futures.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#f8f5ef] rounded-[35px] overflow-hidden border border-black/10 shadow-xl">
-              <img
-                src="/mnt/data/ChatGPT Image May 9, 2026, 03_29_20 PM.png"
-                className="h-96 w-full object-cover"
-              />
-
-              <div className="p-8">
-                <h3 className="font-serif text-4xl mb-2">Dr May Newisar</h3>
-                <p className="uppercase tracking-[0.2em] text-[#de8d62] text-xs font-bold mb-5">
-                  Architect · Urban Researcher
-                </p>
-
-                <p className="text-black/70 leading-relaxed text-sm">
-                  Researching women’s safety, public-space governance,
-                  spatial justice and participatory urbanism.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#f8f5ef] rounded-[35px] overflow-hidden border border-black/10 shadow-xl mt-16">
-              <img
-                src="/mnt/data/ab780348-7aeb-4513-9bc7-32a6c21c8ffd.png"
-                className="h-96 w-full object-cover"
-              />
-
-              <div className="p-8">
-                <h3 className="font-serif text-4xl mb-2">Thahmina Begum</h3>
-                <p className="uppercase tracking-[0.2em] text-[#de8d62] text-xs font-bold mb-5">
-                  Artist-Researcher · Art Psychotherapist
-                </p>
-
-                <p className="text-black/70 leading-relaxed text-sm">
-                  Mixed-media artist and workshop facilitator exploring
-                  wellbeing, trauma, culture and community voice.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TEACHING */}
-      <section id="teaching" className="py-28 px-6 lg:px-12 bg-[#1a1a1a] text-white">
-        <div className="max-w-5xl mb-16">
-          <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-            Teaching
-          </p>
-
-          <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-            Teaching through feminist spatial practice.
-          </h2>
-
-          <p className="text-white/70 text-xl leading-relaxed">
-            Teaching and supervision focus on women’s safety,
-            emotional geographies, participatory urbanism and
-            gender-sensitive public-space design.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            'Design Studios',
-            'Student Research',
-            'Community-Based Learning'
-          ].map((item, i) => (
-            <div key={i} className="border border-white/10 rounded-[35px] p-10">
-              <div className="text-[#de8d62] font-bold mb-5">0{i + 1}</div>
-              <h3 className="font-serif text-4xl leading-tight">{item}</h3>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* RESEARCH */}
-      <section id="research" className="py-28 px-6 lg:px-12 bg-[#efe7da]">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-              Research
-            </p>
-
-            <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-              Research rooted in women’s lived experiences.
-            </h2>
-
-            <p className="text-black/70 text-xl leading-relaxed">
-              Research combines architecture, behavioural mapping,
-              observation, creative engagement and walking methods
-              to understand how public spaces are experienced.
-            </p>
-          </div>
-
-          <img
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop"
-            className="rounded-[40px] shadow-2xl h-[550px] object-cover"
-          />
-        </div>
-      </section>
-
-      {/* ENGAGEMENT */}
-      <section id="engagement" className="py-28 px-6 lg:px-12 bg-white">
-        <div className="max-w-5xl mb-16">
-          <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-            Engagement
-          </p>
-
-          <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-            Engagement beyond consultation.
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div className="bg-[#f4efe6] rounded-[40px] p-10 border border-black/10">
-            <h3 className="font-serif text-5xl mb-6">Workshops</h3>
-            <p className="text-black/70 text-lg leading-relaxed">
-              Creative workshops using collage, storytelling,
-              mapping and spatial reflection.
-            </p>
-          </div>
-
-          <div className="bg-[#f4efe6] rounded-[40px] p-10 border border-black/10">
-            <h3 className="font-serif text-5xl mb-6">Walking Conversations</h3>
-            <p className="text-black/70 text-lg leading-relaxed">
-              Exploring neighbourhoods through movement,
-              observation and women’s narratives.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section id="projects" className="py-28 px-6 lg:px-12 bg-[#1a1a1a] text-white">
-        <div className="max-w-5xl mb-16">
-          <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-            Projects
-          </p>
-
-          <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-            Projects rooted in public-space justice.
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          {[
-            'Women’s Safety and Security in Public Open Spaces',
-            'Empowering Community-Driven Safety in Beeston',
-            'Student Research Studio'
-          ].map((item, i) => (
-            <div key={i} className="bg-white text-black rounded-[35px] overflow-hidden shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                className="h-72 w-full object-cover"
-              />
-
-              <div className="p-8">
-                <div className="text-[#de8d62] font-bold mb-4">0{i + 1}</div>
-                <h3 className="font-serif text-4xl leading-tight mb-6">{item}</h3>
-                <button className="uppercase tracking-[0.2em] text-xs border-b border-black pb-2">
-                  Explore Project
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* RESOURCES */}
-      <section id="resources" className="py-28 px-6 lg:px-12 bg-[#efe7da]">
-        <div className="max-w-5xl mb-16">
-          <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-5">
-            Resources
-          </p>
-
-          <h2 className="font-serif text-6xl leading-[0.9] mb-8">
-            Tools for communities, councils and designers.
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            'Safety Walk Toolkits',
-            'Participatory Mapping Methods',
-            'Community Engagement Guides',
-            'Research & Publications'
-          ].map((item, i) => (
-            <div key={i} className="bg-white rounded-[30px] p-8 border border-black/10 shadow-sm">
-              <div className="text-[#de8d62] font-bold mb-5">0{i + 1}</div>
-              <h3 className="font-serif text-3xl leading-tight">{item}</h3>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="py-32 px-6 lg:px-12 text-center bg-white">
-        <p className="uppercase tracking-[0.3em] text-[#de8d62] font-bold text-xs mb-6">
-          Contact
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Feminist urbanism · architecture · art psychotherapy</p>
+        <h1>
+          Cities hold
+          <br />
+          women’s stories.
+          <br />
+          <span>We make them visible.</span>
+        </h1>
+        <p class="lead">
+          Visible Women, Visible Spaces is a collaborative platform exploring women’s experiences of public open spaces through architecture, walking methods, participatory mapping, creative practice and community engagement.
         </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="button dark">Explore projects</a>
+          <a href="#engagement" class="button light">Workshops</a>
+        </div>
+      </div>
 
-        <h2 className="font-serif text-7xl leading-[0.9] mb-8 max-w-5xl mx-auto">
-          Women’s voices should shape cities.
-        </h2>
+      <div class="hero-collage">
+        <div class="collage-back"></div>
+        <img class="may-hero" src="assets/may-portrait.png" alt="Portrait of Dr May Newisar" />
+        <img class="community-hero" src="assets/workshop-table.jpg" alt="Community workshop table with mapping and creative materials" />
+        <div class="quote-card orange">“Safety is emotional, spatial and deeply personal.”</div>
+        <div class="quote-card yellow">Walking. Mapping. Listening. Reimagining.</div>
+      </div>
+    </section>
 
-        <p className="text-black/70 text-xl max-w-3xl mx-auto leading-relaxed mb-12">
-          Join workshops, collaborations, public talks and projects
-          exploring women’s experiences of public space.
+    <section class="method-strip" aria-label="Project methods">
+      <article><span>01</span><h3>Walking</h3><p>Walking interviews and spatial journeys.</p></article>
+      <article><span>02</span><h3>Mapping</h3><p>Participatory mapping and emotional geographies.</p></article>
+      <article><span>03</span><h3>Making</h3><p>Creative workshops and therapeutic making.</p></article>
+      <article><span>04</span><h3>Listening</h3><p>Women’s stories and lived experiences.</p></article>
+      <article><span>05</span><h3>Analysing</h3><p>Spatial analysis and urban research.</p></article>
+      <article><span>06</span><h3>Reimagining</h3><p>Community-led urban futures.</p></article>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="section-text">
+        <p class="eyebrow">About</p>
+        <h2>Architecture meets art psychotherapy.</h2>
+        <p>
+          The platform combines architecture, feminist urban research, participatory methods and therapeutic creative practice to explore how women experience public space emotionally and spatially.
         </p>
+        <div class="note-box">
+          Through workshops, walking conversations, installations, behavioural mapping and storytelling, we create spaces where women’s lived experiences influence urban futures.
+        </div>
+      </div>
 
-        <button className="bg-black text-white px-10 py-5 rounded-full uppercase tracking-[0.2em] text-xs font-bold">
-          Start a Conversation
-        </button>
-      </section>
-    </div>
-  );
-}
+      <div class="team-grid">
+        <article class="team-card">
+          <img src="assets/may-portrait.png" alt="Dr May Newisar" />
+          <div>
+            <h3>Dr May Newisar</h3>
+            <p class="role">Architect · Urban Researcher</p>
+            <p>Researching women’s safety, public-space governance, spatial justice and participatory urbanism.</p>
+          </div>
+        </article>
+
+        <article class="team-card offset">
+          <img src="assets/thahmina-portrait.png" alt="Thahmina Begum" />
+          <div>
+            <h3>Thahmina Begum</h3>
+            <p class="role">Artist-Researcher · Art Psychotherapist</p>
+            <p>Mixed-media artist and workshop facilitator exploring wellbeing, trauma, culture and community voice.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="teaching" class="section dark-section">
+      <div class="section-heading">
+        <p class="eyebrow">Teaching</p>
+        <h2>Teaching through feminist spatial practice.</h2>
+        <p>Teaching and supervision focus on women’s safety, emotional geographies, participatory urbanism and gender-sensitive public-space design.</p>
+      </div>
+
+      <div class="three-grid">
+        <article><span>01</span><h3>Design Studios</h3><p>Spatial justice, inclusive urbanism and community-led public-space interventions.</p></article>
+        <article><span>02</span><h3>Student Research</h3><p>Anonymised supervision themes include women’s perceived safety, transport, walkability and feminist spatial analysis.</p></article>
+        <article><span>03</span><h3>Live Engagement</h3><p>Workshops, walking interviews and collaborative community-based learning in Leeds neighbourhoods.</p></article>
+      </div>
+    </section>
+
+    <section id="research" class="section research-section">
+      <div class="section-text">
+        <p class="eyebrow">Research</p>
+        <h2>Research rooted in women’s lived experiences.</h2>
+        <p>Research combines architecture, behavioural mapping, observation, creative engagement and walking methods to understand how public spaces are experienced by women.</p>
+      </div>
+      <div class="image-frame">
+        <img src="assets/beeston-map-safe-danger.jpg" alt="Hand-drawn Beeston map showing places of safety and danger" />
+      </div>
+    </section>
+
+    <section id="engagement" class="section engagement-section">
+      <div class="section-heading">
+        <p class="eyebrow">Engagement</p>
+        <h2>Engagement beyond consultation.</h2>
+        <p>Workshops and public conversations become spaces for storytelling, healing, reflection and collective urban imagination.</p>
+      </div>
+
+      <div class="two-grid">
+        <article>
+          <img src="assets/workshop-outputs.jpg" alt="Creative workshop outputs created by participants" />
+          <div><h3>Creative Workshops</h3><p>Collage, drawing, mapping, canvas work and storytelling as forms of spatial evidence.</p></div>
+        </article>
+        <article>
+          <img src="assets/walking-beeston.jpg" alt="Women walking through Beeston during a community safety walk" />
+          <div><h3>Walking Conversations</h3><p>Exploring neighbourhoods through movement, observation and women’s narratives.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section dark-section">
+      <div class="section-heading">
+        <p class="eyebrow">Projects</p>
+        <h2>Projects rooted in public-space justice.</h2>
+      </div>
+
+      <div class="project-grid">
+        <article>
+          <img src="assets/mapping-table.jpg" alt="Participatory mapping table" />
+          <div><span>01</span><h3>Women’s Safety and Security in Public Open Spaces</h3><p>Participatory mapping, walking interviews and workshops exploring women’s experiences of safety in Leeds.</p></div>
+        </article>
+
+        <article>
+          <img src="assets/sticky-map-wide.jpg" alt="Large map with sticky notes showing safety concerns" />
+          <div><span>02</span><h3>Empowering Community-Driven Safety in Beeston</h3><p>Creative and community-led approaches to improving women’s safety and inclusivity in public spaces.</p></div>
+        </article>
+
+        <article>
+          <img src="assets/sticky-map-close.jpg" alt="Close-up of map with sticky notes" />
+          <div><span>03</span><h3>Anonymised Student Research Studio</h3><p>Supervised themes include gender-sensitive urban design, safety perception, transport and feminist spatial analysis.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources" class="section resources-section">
+      <div class="section-heading">
+        <p class="eyebrow">Resources</p>
+        <h2>Tools for communities, councils and designers.</h2>
+      </div>
+
+      <div class="resource-grid">
+        <article><span>01</span><h3>Safety Walk Toolkits</h3></article>
+        <article><span>02</span><h3>Participatory Mapping Methods</h3></article>
+        <article><span>03</span><h3>Community Engagement Guides</h3></article>
+        <article><span>04</span><h3>Research & Publications</h3></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <p class="eyebrow">Contact</p>
+      <h2>Women’s voices should shape cities.</h2>
+      <p>Join workshops, collaborations, public talks and projects exploring women’s experiences of public space.</p>
+      <a href="mailto:info@example.com" class="button dark">Start a conversation</a>
+      <p class="small-note">Replace info@example.com with your project email before publishing.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="logo footer-logo"><span>VWVS</span><span>Visible Women</span><span>Visible Spaces</span></div>
+    <p>Architecture · Art Psychotherapy · Feminist Urbanism · Community Action</p>
+  </footer>
+</body>
+</html>
