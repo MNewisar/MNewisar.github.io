@@ -1,201 +1,1253 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Visible Women, Visible Spaces</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700;900&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>VWVS | Visible Women Visible Spaces</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overflow-x:hidden;
+  background:#efe7dd;
+  color:#141414;
+  font-family:Inter,sans-serif;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* =========================================================
+VARIABLES
+========================================================= */
+
+:root{
+
+  --bg:#efe7dd;
+  --paper:#f8f3eb;
+  --black:#141414;
+  --orange:#d98d63;
+  --soft:#cbc1b5;
+  --yellow:#f0d65d;
+  --line:rgba(0,0,0,.08);
+
+}
+
+/* =========================================================
+NOISE
+========================================================= */
+
+.noise{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.03;
+  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+  z-index:999;
+}
+
+/* =========================================================
+TYPOGRAPHY
+========================================================= */
+
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  letter-spacing:-.05em;
+}
+
+h1{
+  font-size:clamp(70px,9vw,155px);
+  line-height:.82;
+}
+
+h2{
+  font-size:clamp(52px,6vw,100px);
+  line-height:.88;
+}
+
+h3{
+  font-size:38px;
+}
+
+p{
+  line-height:1.8;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+header{
+
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+
+  padding:24px 60px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  backdrop-filter:blur(16px);
+
+  background:rgba(239,231,221,.74);
+
+  border-bottom:1px solid var(--line);
+
+}
+
+.logo-header{
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+}
+
+.logo-header img{
+
+  width:120px;
+
+}
+
+.logo-text{
+
+  text-transform:uppercase;
+  font-weight:900;
+  line-height:.9;
+  letter-spacing:-.04em;
+
+}
+
+.logo-text span:nth-child(2){
+  color:var(--orange);
+}
+
+nav{
+
+  display:flex;
+  gap:28px;
+
+  text-transform:uppercase;
+  letter-spacing:.18em;
+
+  font-size:11px;
+  font-weight:700;
+
+}
+
+nav a{
+
+  position:relative;
+
+}
+
+nav a:after{
+
+  content:'';
+
+  position:absolute;
+  left:0;
+  bottom:-8px;
+
+  width:0;
+  height:2px;
+
+  background:var(--orange);
+
+  transition:.3s;
+
+}
+
+nav a:hover:after{
+
+  width:100%;
+
+}
+
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.btn{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px 32px;
+
+  border-radius:999px;
+
+  border:1px solid #141414;
+
+  text-transform:uppercase;
+  letter-spacing:.18em;
+
+  font-size:11px;
+  font-weight:700;
+
+  transition:.35s;
+
+}
+
+.btn:hover{
+
+  transform:translateY(-4px);
+
+}
+
+.btn-dark{
+
+  background:#141414;
+  color:white;
+
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero{
+
+  min-height:100vh;
+
+  padding:190px 70px 120px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:60px;
+  align-items:center;
+
+}
+
+.eyebrow{
+
+  text-transform:uppercase;
+  letter-spacing:.3em;
+
+  color:var(--orange);
+
+  font-size:11px;
+  font-weight:800;
+
+  margin-bottom:28px;
+
+}
+
+.hero-text p{
+
+  margin-top:36px;
+
+  font-size:20px;
+
+  color:rgba(0,0,0,.72);
+
+  max-width:680px;
+
+}
+
+.hero-buttons{
+
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+
+  margin-top:42px;
+
+}
+
+/* =========================================================
+COLLAGE
+========================================================= */
+
+.collage{
+
+  position:relative;
+  height:850px;
+
+}
+
+.shape{
+
+  position:absolute;
+
+  width:68%;
+  height:450px;
+
+  border-radius:42px;
+
+  background:#d7cec1;
+
+  transform:rotate(-5deg);
+
+}
+
+.may{
+
+  position:absolute;
+
+  width:58%;
+  height:570px;
+
+  object-fit:cover;
+
+  top:40px;
+  left:30px;
+
+  border-radius:40px;
+
+  border:12px solid white;
+
+  transform:rotate(-4deg);
+
+  box-shadow:0 28px 90px rgba(0,0,0,.18);
+
+}
+
+.community{
+
+  position:absolute;
+
+  width:52%;
+  height:360px;
+
+  object-fit:cover;
+
+  top:270px;
+  right:0;
+
+  border-radius:40px;
+
+  transform:rotate(5deg);
+
+  box-shadow:0 24px 70px rgba(0,0,0,.14);
+
+}
+
+.quote{
+
+  position:absolute;
+
+  left:-10px;
+  bottom:120px;
+
+  width:290px;
+
+  padding:30px;
+
+  background:var(--orange);
+  color:white;
+
+  border-radius:30px;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:34px;
+  line-height:1;
+
+  transform:rotate(-6deg);
+
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+
+}
+
+.quote2{
+
+  position:absolute;
+
+  right:50px;
+  bottom:0;
+
+  width:250px;
+
+  padding:24px;
+
+  background:var(--yellow);
+
+  border-radius:28px;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:30px;
+  line-height:1;
+
+  transform:rotate(5deg);
+
+  box-shadow:0 18px 50px rgba(0,0,0,.14);
+
+}
+
+/* =========================================================
+SECTIONS
+========================================================= */
+
+section{
+
+  padding:120px 70px;
+
+}
+
+.grid2{
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:70px;
+  align-items:start;
+
+}
+
+.section-text{
+
+  font-size:19px;
+  color:rgba(0,0,0,.72);
+
+}
+
+/* =========================================================
+ABOUT CARDS
+========================================================= */
+
+.cards{
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:30px;
+
+}
+
+.card{
+
+  background:#f8f3eb;
+
+  border-radius:40px;
+
+  overflow:hidden;
+
+  box-shadow:0 18px 60px rgba(0,0,0,.08);
+
+}
+
+.card:nth-child(2){
+
+  margin-top:80px;
+
+}
+
+.card img{
+
+  width:100%;
+  height:430px;
+
+  object-fit:cover;
+
+}
+
+.card-content{
+
+  padding:32px;
+
+}
+
+.role{
+
+  margin:16px 0 18px;
+
+  color:var(--orange);
+
+  text-transform:uppercase;
+  letter-spacing:.18em;
+
+  font-size:11px;
+  font-weight:800;
+
+}
+
+/* =========================================================
+RESEARCH
+========================================================= */
+
+.research-image img{
+
+  border-radius:42px;
+
+  box-shadow:0 25px 80px rgba(0,0,0,.15);
+
+}
+
+/* =========================================================
+DARK
+========================================================= */
+
+.dark{
+
+  background:#141414;
+  color:white;
+
+}
+
+/* =========================================================
+PROJECTS
+========================================================= */
+
+.project-grid{
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:28px;
+
+  margin-top:60px;
+
+}
+
+.project{
+
+  background:white;
+  color:black;
+
+  border-radius:34px;
+
+  overflow:hidden;
+
+  box-shadow:0 18px 60px rgba(0,0,0,.12);
+
+}
+
+.project img{
+
+  width:100%;
+  height:280px;
+
+  object-fit:cover;
+
+}
+
+.project-content{
+
+  padding:30px;
+
+}
+
+.project span{
+
+  display:block;
+
+  margin-bottom:14px;
+
+  color:var(--orange);
+
+  font-weight:900;
+
+}
+
+/* =========================================================
+RESOURCES
+========================================================= */
+
+.resource-grid{
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  gap:24px;
+
+  margin-top:60px;
+
+}
+
+.resource{
+
+  background:white;
+
+  border-radius:30px;
+
+  padding:36px;
+
+  min-height:220px;
+
+}
+
+/* =========================================================
+CONTACT
+========================================================= */
+
+.contact{
+
+  text-align:center;
+
+}
+
+.contact p{
+
+  margin:30px auto 0;
+
+  max-width:720px;
+
+  font-size:20px;
+
+  color:rgba(0,0,0,.72);
+
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer{
+
+  background:black;
+  color:white;
+
+  padding:50px 70px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+}
+
+.footer-logo{
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+
+}
+
+.footer-logo img{
+
+  width:90px;
+
+}
+
+footer p{
+
+  opacity:.6;
+
+}
+
+/* =========================================================
+ANIMATIONS
+========================================================= */
+
+.fade{
+
+  opacity:0;
+  transform:translateY(40px);
+
+  transition:1s;
+
+}
+
+.fade.show{
+
+  opacity:1;
+  transform:translateY(0);
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .hero,
+  .grid2,
+  .cards,
+  .project-grid,
+  .resource-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+  nav{
+
+    display:none;
+
+  }
+
+}
+
+@media(max-width:700px){
+
+  header,
+  section,
+  footer,
+  .hero{
+
+    padding-left:24px;
+    padding-right:24px;
+
+  }
+
+  h1{
+
+    font-size:72px;
+
+  }
+
+  .collage{
+
+    height:580px;
+
+  }
+
+  .may{
+
+    width:75%;
+    height:420px;
+
+  }
+
+  .community{
+
+    width:55%;
+    height:220px;
+
+    top:280px;
+
+  }
+
+  .quote,
+  .quote2{
+
+    display:none;
+
+  }
+
+}
+
+</style>
 </head>
 
 <body>
-  <header class="site-header">
-    <a href="#top" class="logo" aria-label="Visible Women Visible Spaces Home">
-      <span>VWVS</span>
-      <span>Visible Women</span>
+
+<div class="noise"></div>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header>
+
+  <div class="logo-header">
+
+    <!-- LOGO -->
+    <img src="ChatGPT Image May 9, 2026, 03_24_27 PM.png">
+
+    <div class="logo-text">
+
+      <span>VWVS</span><br>
+      <span>Visible Women</span><br>
       <span>Visible Spaces</span>
-    </a>
 
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#research">Research</a>
-      <a href="#engagement">Engagement</a>
-      <a href="#projects">Projects</a>
-      <a href="#resources">Resources</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    </div>
 
-    <a href="#contact" class="nav-cta">Get involved</a>
-  </header>
+  </div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Feminist urbanism · architecture · art psychotherapy</p>
-        <h1>
-          Cities hold
-          <br />
-          women’s stories.
-          <br />
-          <span>We make them visible.</span>
-        </h1>
-        <p class="lead">
-          Visible Women, Visible Spaces is a collaborative platform exploring women’s experiences of public open spaces through architecture, walking methods, participatory mapping, creative practice and community engagement.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="button dark">Explore projects</a>
-          <a href="#engagement" class="button light">Workshops</a>
-        </div>
+  <nav>
+
+    <a href="#about">About</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#research">Research</a>
+    <a href="#engagement">Engagement</a>
+    <a href="#projects">Projects</a>
+    <a href="#resources">Resources</a>
+    <a href="#contact">Contact</a>
+
+  </nav>
+
+  <a href="#contact" class="btn">
+    Get involved
+  </a>
+
+</header>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="hero-text fade">
+
+    <div class="eyebrow">
+
+      Feminist urbanism · architecture · art psychotherapy
+
+    </div>
+
+    <h1>
+
+      Cities hold
+      <br>
+      women’s stories.
+      <br>
+
+      <span>
+        We make them visible.
+      </span>
+
+    </h1>
+
+    <p>
+
+      Visible Women, Visible Spaces is a collaborative platform exploring women’s experiences of public open spaces through architecture, participatory mapping, walking methods, creative practice and community engagement.
+
+    </p>
+
+    <div class="hero-buttons">
+
+      <a class="btn btn-dark">
+
+        Explore Projects
+
+      </a>
+
+      <a class="btn">
+
+        Workshops
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="collage fade">
+
+    <div class="shape"></div>
+
+    <!-- MAY -->
+    <img class="may" src="ChatGPT Image May 9, 2026, 03_29_20 PM.png">
+
+    <!-- COMMUNITY -->
+    <img class="community" src="IMG_6409.JPEG">
+
+    <div class="quote">
+
+      “Safety is emotional, spatial and deeply personal.”
+
+    </div>
+
+    <div class="quote2">
+
+      Walking.
+      Mapping.
+      Listening.
+      Reimagining.
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+ABOUT
+========================================================= -->
+
+<section id="about">
+
+  <div class="grid2">
+
+    <div class="fade">
+
+      <div class="eyebrow">
+        About
       </div>
 
-      <div class="hero-collage">
-        <div class="collage-back"></div>
-        <img class="may-hero" src="assets/may-portrait.png" alt="Portrait of Dr May Newisar" />
-        <img class="community-hero" src="assets/workshop-table.jpg" alt="Community workshop table with mapping and creative materials" />
-        <div class="quote-card orange">“Safety is emotional, spatial and deeply personal.”</div>
-        <div class="quote-card yellow">Walking. Mapping. Listening. Reimagining.</div>
-      </div>
-    </section>
+      <h2>
 
-    <section class="method-strip" aria-label="Project methods">
-      <article><span>01</span><h3>Walking</h3><p>Walking interviews and spatial journeys.</p></article>
-      <article><span>02</span><h3>Mapping</h3><p>Participatory mapping and emotional geographies.</p></article>
-      <article><span>03</span><h3>Making</h3><p>Creative workshops and therapeutic making.</p></article>
-      <article><span>04</span><h3>Listening</h3><p>Women’s stories and lived experiences.</p></article>
-      <article><span>05</span><h3>Analysing</h3><p>Spatial analysis and urban research.</p></article>
-      <article><span>06</span><h3>Reimagining</h3><p>Community-led urban futures.</p></article>
-    </section>
+        Architecture meets art psychotherapy.
 
-    <section id="about" class="section about-section">
+      </h2>
+
       <div class="section-text">
-        <p class="eyebrow">About</p>
-        <h2>Architecture meets art psychotherapy.</h2>
-        <p>
-          The platform combines architecture, feminist urban research, participatory methods and therapeutic creative practice to explore how women experience public space emotionally and spatially.
-        </p>
-        <div class="note-box">
-          Through workshops, walking conversations, installations, behavioural mapping and storytelling, we create spaces where women’s lived experiences influence urban futures.
+
+        Visible Women Visible Spaces combines architecture, feminist urban research, participatory methods and therapeutic creative practice to explore how women emotionally and spatially experience public space.
+
+        <br><br>
+
+        Through workshops, walking conversations, behavioural mapping, storytelling and visual making, women’s lived experiences become part of shaping urban futures.
+
+      </div>
+
+    </div>
+
+    <div class="cards fade">
+
+      <!-- MAY -->
+
+      <div class="card">
+
+        <img src="ChatGPT Image May 9, 2026, 03_29_20 PM.png">
+
+        <div class="card-content">
+
+          <h3>
+            Dr May Newisar
+          </h3>
+
+          <div class="role">
+
+            Architect · Urban Researcher
+
+          </div>
+
+          <p>
+
+            Researching women’s safety, spatial justice, participatory urbanism and public-space governance through architecture and community engagement.
+
+          </p>
+
         </div>
+
       </div>
 
-      <div class="team-grid">
-        <article class="team-card">
-          <img src="assets/may-portrait.png" alt="Dr May Newisar" />
-          <div>
-            <h3>Dr May Newisar</h3>
-            <p class="role">Architect · Urban Researcher</p>
-            <p>Researching women’s safety, public-space governance, spatial justice and participatory urbanism.</p>
+      <!-- THAHMINA -->
+
+      <div class="card">
+
+        <img src="22f4e6e7-009f-4e93-bba8-3ea5853c217c.png">
+
+        <div class="card-content">
+
+          <h3>
+            Thahmina Begum
+          </h3>
+
+          <div class="role">
+
+            Artist-Researcher · Art Psychotherapist
+
           </div>
-        </article>
 
-        <article class="team-card offset">
-          <img src="assets/thahmina-portrait.png" alt="Thahmina Begum" />
-          <div>
-            <h3>Thahmina Begum</h3>
-            <p class="role">Artist-Researcher · Art Psychotherapist</p>
-            <p>Mixed-media artist and workshop facilitator exploring wellbeing, trauma, culture and community voice.</p>
-          </div>
-        </article>
-      </div>
-    </section>
+          <p>
 
-    <section id="teaching" class="section dark-section">
-      <div class="section-heading">
-        <p class="eyebrow">Teaching</p>
-        <h2>Teaching through feminist spatial practice.</h2>
-        <p>Teaching and supervision focus on women’s safety, emotional geographies, participatory urbanism and gender-sensitive public-space design.</p>
+            Mixed-media artist, workshop facilitator and HCPC registered Art Psychotherapist exploring trauma, wellbeing, heritage and community voice.
+
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="three-grid">
-        <article><span>01</span><h3>Design Studios</h3><p>Spatial justice, inclusive urbanism and community-led public-space interventions.</p></article>
-        <article><span>02</span><h3>Student Research</h3><p>Anonymised supervision themes include women’s perceived safety, transport, walkability and feminist spatial analysis.</p></article>
-        <article><span>03</span><h3>Live Engagement</h3><p>Workshops, walking interviews and collaborative community-based learning in Leeds neighbourhoods.</p></article>
-      </div>
-    </section>
+    </div>
 
-    <section id="research" class="section research-section">
+  </div>
+
+</section>
+
+<!-- =========================================================
+RESEARCH
+========================================================= -->
+
+<section id="research">
+
+  <div class="grid2">
+
+    <div class="fade">
+
+      <div class="eyebrow">
+        Research
+      </div>
+
+      <h2>
+
+        Research rooted in women’s lived experiences.
+
+      </h2>
+
       <div class="section-text">
-        <p class="eyebrow">Research</p>
-        <h2>Research rooted in women’s lived experiences.</h2>
-        <p>Research combines architecture, behavioural mapping, observation, creative engagement and walking methods to understand how public spaces are experienced by women.</p>
-      </div>
-      <div class="image-frame">
-        <img src="assets/beeston-map-safe-danger.jpg" alt="Hand-drawn Beeston map showing places of safety and danger" />
-      </div>
-    </section>
 
-    <section id="engagement" class="section engagement-section">
-      <div class="section-heading">
-        <p class="eyebrow">Engagement</p>
-        <h2>Engagement beyond consultation.</h2>
-        <p>Workshops and public conversations become spaces for storytelling, healing, reflection and collective urban imagination.</p>
+        Research combines architecture, behavioural mapping, walking methods, observation and creative engagement to understand how women emotionally and spatially experience public space.
+
+        <br><br>
+
+        The work explores safety, belonging, visibility, identity and inclusivity within everyday urban life.
+
       </div>
 
-      <div class="two-grid">
-        <article>
-          <img src="assets/workshop-outputs.jpg" alt="Creative workshop outputs created by participants" />
-          <div><h3>Creative Workshops</h3><p>Collage, drawing, mapping, canvas work and storytelling as forms of spatial evidence.</p></div>
-        </article>
-        <article>
-          <img src="assets/walking-beeston.jpg" alt="Women walking through Beeston during a community safety walk" />
-          <div><h3>Walking Conversations</h3><p>Exploring neighbourhoods through movement, observation and women’s narratives.</p></div>
-        </article>
+    </div>
+
+    <div class="research-image fade">
+
+      <img src="IMG_6402.JPEG">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+PROJECTS
+========================================================= -->
+
+<section id="projects" class="dark">
+
+  <div class="eyebrow">
+
+    Projects
+
+  </div>
+
+  <h2>
+
+    Projects rooted in public-space justice.
+
+  </h2>
+
+  <div class="project-grid">
+
+    <!-- PROJECT 1 -->
+
+    <div class="project fade">
+
+      <img src="IMG_6409.JPEG">
+
+      <div class="project-content">
+
+        <span>01</span>
+
+        <h3>
+
+          Women’s Safety and Security in Public Open Spaces
+
+        </h3>
+
       </div>
-    </section>
 
-    <section id="projects" class="section dark-section">
-      <div class="section-heading">
-        <p class="eyebrow">Projects</p>
-        <h2>Projects rooted in public-space justice.</h2>
+    </div>
+
+    <!-- PROJECT 2 -->
+
+    <div class="project fade">
+
+      <img src="IMG_6415.JPEG">
+
+      <div class="project-content">
+
+        <span>02</span>
+
+        <h3>
+
+          Empowering Community-Driven Safety in Beeston
+
+        </h3>
+
       </div>
 
-      <div class="project-grid">
-        <article>
-          <img src="assets/mapping-table.jpg" alt="Participatory mapping table" />
-          <div><span>01</span><h3>Women’s Safety and Security in Public Open Spaces</h3><p>Participatory mapping, walking interviews and workshops exploring women’s experiences of safety in Leeds.</p></div>
-        </article>
+    </div>
 
-        <article>
-          <img src="assets/sticky-map-wide.jpg" alt="Large map with sticky notes showing safety concerns" />
-          <div><span>02</span><h3>Empowering Community-Driven Safety in Beeston</h3><p>Creative and community-led approaches to improving women’s safety and inclusivity in public spaces.</p></div>
-        </article>
+    <!-- PROJECT 3 -->
 
-        <article>
-          <img src="assets/sticky-map-close.jpg" alt="Close-up of map with sticky notes" />
-          <div><span>03</span><h3>Anonymised Student Research Studio</h3><p>Supervised themes include gender-sensitive urban design, safety perception, transport and feminist spatial analysis.</p></div>
-        </article>
-      </div>
-    </section>
+    <div class="project fade">
 
-    <section id="resources" class="section resources-section">
-      <div class="section-heading">
-        <p class="eyebrow">Resources</p>
-        <h2>Tools for communities, councils and designers.</h2>
+      <img src="IMG_0688.JPEG">
+
+      <div class="project-content">
+
+        <span>03</span>
+
+        <h3>
+
+          Student Research Supervision
+
+        </h3>
+
       </div>
 
-      <div class="resource-grid">
-        <article><span>01</span><h3>Safety Walk Toolkits</h3></article>
-        <article><span>02</span><h3>Participatory Mapping Methods</h3></article>
-        <article><span>03</span><h3>Community Engagement Guides</h3></article>
-        <article><span>04</span><h3>Research & Publications</h3></article>
-      </div>
-    </section>
+    </div>
 
-    <section id="contact" class="section contact-section">
-      <p class="eyebrow">Contact</p>
-      <h2>Women’s voices should shape cities.</h2>
-      <p>Join workshops, collaborations, public talks and projects exploring women’s experiences of public space.</p>
-      <a href="mailto:info@example.com" class="button dark">Start a conversation</a>
-      <p class="small-note">Replace info@example.com with your project email before publishing.</p>
-    </section>
-  </main>
+  </div>
 
-  <footer class="footer">
-    <div class="logo footer-logo"><span>VWVS</span><span>Visible Women</span><span>Visible Spaces</span></div>
-    <p>Architecture · Art Psychotherapy · Feminist Urbanism · Community Action</p>
-  </footer>
+</section>
+
+<!-- =========================================================
+RESOURCES
+========================================================= -->
+
+<section id="resources">
+
+  <div class="eyebrow">
+
+    Resources
+
+  </div>
+
+  <h2>
+
+    Tools for communities,
+    councils and designers.
+
+  </h2>
+
+  <div class="resource-grid">
+
+    <div class="resource fade">
+
+      <h3>
+
+        Safety Walk Toolkits
+
+      </h3>
+
+    </div>
+
+    <div class="resource fade">
+
+      <h3>
+
+        Participatory Mapping Methods
+
+      </h3>
+
+    </div>
+
+    <div class="resource fade">
+
+      <h3>
+
+        Community Engagement Guides
+
+      </h3>
+
+    </div>
+
+    <div class="resource fade">
+
+      <h3>
+
+        Research & Publications
+
+      </h3>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+CONTACT
+========================================================= -->
+
+<section id="contact" class="contact">
+
+  <div class="eyebrow">
+
+    Contact
+
+  </div>
+
+  <h2>
+
+    Women’s voices should shape cities.
+
+  </h2>
+
+  <p>
+
+    Join workshops, collaborations, public talks and projects exploring women’s experiences of public space.
+
+  </p>
+
+</section>
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer>
+
+  <div class="footer-logo">
+
+    <!-- LOGO -->
+    <img src="ChatGPT Image May 9, 2026, 03_24_27 PM.png">
+
+    <div>
+
+      Visible Women Visible Spaces
+
+    </div>
+
+  </div>
+
+  <p>
+
+    Architecture · Art Psychotherapy · Feminist Urbanism · Community Action
+
+  </p>
+
+</footer>
+
+<!-- =========================================================
+JAVASCRIPT
+========================================================= -->
+
+<script>
+
+const fades = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add('show');
+
+    }
+
+  });
+
+},{
+  threshold:.2
+});
+
+fades.forEach(el => observer.observe(el));
+
+</script>
+
 </body>
 </html>
