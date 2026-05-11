@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VWVS — Visible Women Visible Spaces</title>
+  <meta name="description" content="Visible Women, Visible Spaces: feminist urbanism, architecture, art psychotherapy and community-led public space research." />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #efe7dd;
+      --paper: #f8f3eb;
+      --ink: #141414;
+      --grey: #cfc7bc;
+      --orange: #d98d63;
+      --orange-dark: #b66d49;
+      --yellow: #f0d65d;
+      --white: #ffffff;
+      --line: rgba(20, 20, 20, 0.12);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.16);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 5%, rgba(217,141,99,.16), transparent 28%),
+        radial-gradient(circle at 82% 24%, rgba(240,214,93,.16), transparent 22%),
+        linear-gradient(180deg, var(--cream), #f6efe5 55%, var(--cream));
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      z-index: 999;
+      mix-blend-mode: multiply;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,.025) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,.018) 0 1px, transparent 1px 7px);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      min-height: 98px;
+      padding: 16px 48px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 28px;
+      align-items: center;
+      background: rgba(239, 231, 221, .84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand { display: flex; align-items: center; gap: 16px; min-width: 230px; }
+    .brand img { width: 92px; height: auto; object-fit: contain; }
+    .brand-text { line-height: .92; font-weight: 900; text-transform: uppercase; letter-spacing: -.04em; font-size: 15px; }
+    .brand-text span:nth-child(2) { color: var(--orange); }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .main-nav a { position: relative; padding: 8px 0; }
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width .28s ease;
+    }
+    .main-nav a:hover::after { width: 100%; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .search-button, .menu-button, .pill-button {
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .pill-button { background: var(--ink); color: var(--white); }
+    .search-button:hover, .menu-button:hover { background: var(--ink); color: var(--white); }
+    .menu-button { display: none; }
+
+    .mobile-panel {
+      position: fixed;
+      inset: 98px 0 auto 0;
+      z-index: 90;
+      background: rgba(20,20,20,.96);
+      color: white;
+      padding: 28px;
+      display: none;
+      flex-direction: column;
+      gap: 18px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .mobile-panel.open { display: flex; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      color: var(--orange-dark);
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 26px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: -.055em;
+    }
+
+    h1 { font-size: clamp(70px, 8.5vw, 148px); line-height: .82; }
+    h2 { font-size: clamp(48px, 6vw, 100px); line-height: .88; }
+    h3 { font-size: clamp(30px, 3vw, 46px); line-height: .96; }
+
+    .lead, .section-copy, .card p, .project p, .resource p {
+      font-size: 18px;
+      line-height: 1.72;
+      color: rgba(20, 20, 20, .72);
+    }
+    .dark .lead, .dark .section-copy { color: rgba(255,255,255,.72); }
+
+    .button-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 38px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+      font-weight: 800;
+      transition: transform .25s ease, background .25s ease, color .25s ease;
+    }
+    .button.dark { background: var(--ink); color: var(--white); }
+    .button:hover { transform: translateY(-4px); }
+    .button:not(.dark):hover { background: var(--ink); color: var(--white); }
+
+    .hero {
+      min-height: 100vh;
+      padding: 158px 54px 86px;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "VISIBLE WOMEN / VISIBLE SPACES";
+      position: absolute;
+      bottom: 18px;
+      left: 54px;
+      right: 54px;
+      font-size: clamp(32px, 7vw, 120px);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      color: rgba(20,20,20,.035);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero h1 span { color: var(--orange); }
+    .hero .lead { margin-top: 34px; max-width: 680px; font-size: 20px; }
+
+    .hero-meta { display: flex; align-items: center; gap: 14px; margin-top: 42px; color: rgba(20,20,20,.68); }
+    .meta-dot { width: 52px; height: 52px; background: var(--orange); border-radius: 50%; box-shadow: inset 0 0 0 8px rgba(255,255,255,.45); }
+
+    .hero-collage { position: relative; height: 810px; min-height: 680px; }
+    .collage-map {
+      position: absolute;
+      inset: 20px 0 auto 12%;
+      width: 78%;
+      height: 430px;
+      background:
+        linear-gradient(90deg, rgba(20,20,20,.05) 1px, transparent 1px) 0 0/34px 34px,
+        linear-gradient(0deg, rgba(20,20,20,.05) 1px, transparent 1px) 0 0/34px 34px,
+        #d9d0c5;
+      border-radius: 44px;
+      transform: rotate(-3deg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .collage-map::before {
+      content: "";
+      position: absolute;
+      inset: 50px -40px auto 70px;
+      height: 180px;
+      border: 5px dashed var(--orange);
+      border-left: none;
+      border-bottom: none;
+      border-radius: 0 120px 0 0;
+      transform: rotate(8deg);
+    }
+
+    .may-portrait {
+      position: absolute;
+      top: 76px;
+      left: 0;
+      width: 47%;
+      height: 570px;
+      object-fit: cover;
+      border-radius: 42px;
+      border: 12px solid white;
+      transform: rotate(-4deg);
+      box-shadow: var(--shadow);
+      z-index: 3;
+    }
+
+    .community-photo {
+      position: absolute;
+      top: 300px;
+      right: 0;
+      width: 58%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 42px;
+      transform: rotate(4deg);
+      box-shadow: var(--shadow);
+      z-index: 4;
+    }
+
+    .logo-stamp {
+      position: absolute;
+      right: 16%;
+      top: 22px;
+      width: 245px;
+      z-index: 5;
+      background: rgba(255,255,255,.74);
+      border-radius: 26px;
+      padding: 10px;
+      transform: rotate(3deg);
+      box-shadow: 0 18px 50px rgba(0,0,0,.1);
+    }
+
+    .quote-card {
+      position: absolute;
+      z-index: 7;
+      font-family: var(--serif);
+      font-size: 31px;
+      line-height: 1;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+    .quote-orange { left: -8px; bottom: 95px; width: 292px; padding: 30px; background: var(--orange); color: white; transform: rotate(-6deg); }
+    .quote-yellow { right: 70px; bottom: 8px; width: 262px; padding: 26px; background: var(--yellow); color: var(--ink); transform: rotate(5deg); }
+
+    .hand-note {
+      position: absolute;
+      z-index: 8;
+      right: 0;
+      top: 172px;
+      width: 190px;
+      padding: 22px;
+      background: #f6d879;
+      transform: rotate(8deg);
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1;
+      box-shadow: 0 18px 45px rgba(0,0,0,.13);
+    }
+
+    .method-strip {
+      background: var(--ink);
+      color: white;
+      padding: 60px 54px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+    .method-strip article { border-left: 1px solid rgba(255,255,255,.18); padding-left: 20px; min-height: 130px; }
+    .method-strip span, .number { color: var(--orange); font-weight: 900; display: block; margin-bottom: 14px; }
+    .method-strip h3 { font-size: 29px; margin-bottom: 10px; }
+    .method-strip p { color: rgba(255,255,255,.68); line-height: 1.5; font-size: 14px; }
+
+    section.content-section { padding: 118px 54px; }
+    .section-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 76px; align-items: start; }
+    .section-heading { max-width: 900px; margin-bottom: 58px; }
+    .white-section { background: rgba(255,255,255,.72); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .beige-section { background: #e8ded3; }
+    .dark { background: var(--ink); color: white; }
+
+    .note-box {
+      margin-top: 32px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 32px;
+      transform: rotate(-1deg);
+      box-shadow: 0 14px 40px rgba(0,0,0,.06);
+    }
+
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .team-card { background: var(--paper); border-radius: 40px; border: 1px solid var(--line); overflow: hidden; box-shadow: var(--shadow); }
+    .team-card:nth-child(2) { margin-top: 72px; }
+    .team-card img { width: 100%; height: 430px; object-fit: cover; }
+    .team-card .body { padding: 32px; }
+    .role { text-transform: uppercase; letter-spacing: .16em; color: var(--orange-dark); font-size: 11px; font-weight: 900; margin: 14px 0 18px; }
+
+    .three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 50px; }
+    .service-card { border-radius: 34px; padding: 36px; min-height: 255px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); }
+    .service-card.light { background: var(--paper); color: var(--ink); border: 1px solid var(--line); box-shadow: 0 16px 50px rgba(0,0,0,.06); }
+    .service-card p { margin-top: 18px; color: inherit; opacity: .72; line-height: 1.65; }
+
+    .image-frame img { border-radius: 42px; height: 560px; width: 100%; object-fit: cover; box-shadow: var(--shadow); }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 54px; }
+    .project { background: var(--paper); color: var(--ink); border-radius: 36px; overflow: hidden; box-shadow: var(--shadow); transition: transform .25s ease; }
+    .project:hover { transform: translateY(-8px); }
+    .project img { width: 100%; height: 285px; object-fit: cover; }
+    .project .body { padding: 30px; }
+    .project .body p { margin-top: 15px; }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr 1fr;
+      grid-auto-rows: 260px;
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .archive-grid figure { position: relative; overflow: hidden; border-radius: 28px; box-shadow: 0 18px 55px rgba(0,0,0,.1); }
+    .archive-grid figure:nth-child(1) { grid-row: span 2; }
+    .archive-grid figure:nth-child(4) { grid-column: span 2; }
+    .archive-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .archive-grid figure:hover img { transform: scale(1.06); }
+    .archive-grid figcaption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(248,243,235,.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 54px; }
+    .resource { background: white; border: 1px solid var(--line); border-radius: 32px; padding: 34px; min-height: 230px; box-shadow: 0 16px 50px rgba(0,0,0,.06); }
+    .resource h3 { font-size: 34px; }
+    .resource p { margin-top: 16px; font-size: 15px; }
+
+    .search-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(20,20,20,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    .search-panel.open { display: flex; }
+    .search-box { background: var(--paper); width: min(760px, 100%); border-radius: 34px; padding: 38px; box-shadow: var(--shadow); }
+    .search-box input {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid var(--ink);
+      background: transparent;
+      font-size: 34px;
+      font-family: var(--serif);
+      padding: 12px 0;
+      outline: none;
+    }
+    .search-results { margin-top: 25px; color: rgba(20,20,20,.7); line-height: 1.7; }
+    .close-search { margin-top: 26px; }
+
+    .contact { text-align: center; }
+    .contact .section-copy { margin: 28px auto 0; max-width: 720px; font-size: 20px; }
+
+    footer {
+      background: #000;
+      color: white;
+      padding: 42px 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 18px; font-weight: 900; text-transform: uppercase; }
+    .footer-logo img { width: 96px; height: auto; }
+    footer p { opacity: .62; }
+
+    .fade { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s ease; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1180px) {
+      .main-nav { display: none; }
+      .menu-button { display: inline-flex; }
+      .site-header { grid-template-columns: auto auto; }
+      .header-actions { justify-self: end; }
+      .hero, .section-grid { grid-template-columns: 1fr; }
+      .hero-collage { height: 680px; }
+      .method-strip, .three-grid, .project-grid, .resource-grid { grid-template-columns: repeat(2, 1fr); }
+      .archive-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .site-header { min-height: 86px; padding: 12px 20px; }
+      .brand img { width: 70px; }
+      .brand-text { display: none; }
+      .search-button, .pill-button { display: none; }
+      .hero { padding: 126px 22px 76px; }
+      .hero h1 { font-size: 68px; }
+      section.content-section { padding: 82px 22px; }
+      .method-strip, .team-grid, .three-grid, .project-grid, .resource-grid, .archive-grid { grid-template-columns: 1fr; }
+      .hero-collage { height: 560px; }
+      .logo-stamp { width: 160px; right: 0; top: 0; }
+      .may-portrait { width: 72%; height: 390px; left: 0; }
+      .community-photo { width: 58%; height: 230px; top: 280px; }
+      .quote-card, .hand-note { display: none; }
+      .team-card:nth-child(2) { margin-top: 0; }
+      .archive-grid figure:nth-child(1), .archive-grid figure:nth-child(4) { grid-row: span 1; grid-column: span 1; }
+      footer { flex-direction: column; align-items: flex-start; padding: 36px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="search-panel" id="searchPanel">
+    <div class="search-box">
+      <div class="eyebrow">Search VWVS</div>
+      <input id="searchInput" type="search" placeholder="Search teaching, research, projects..." />
+      <div class="search-results" id="searchResults">
+        Try searching: safety, Beeston, mapping, workshops, teaching, research, resources.
+      </div>
+      <button class="button close-search" onclick="toggleSearch()">Close</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a href="#top" class="brand">
+      <img src="ChatGPT Image May 9, 2026, 03_24_27 PM.png" alt="VWVS logo" />
+      <div class="brand-text">
+        <span>VWVS</span><br />
+        <span>Visible Women</span><br />
+        <span>Visible Spaces</span>
+      </div>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#about">About</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#research">Research</a>
+      <a href="#engagement">Engagement</a>
+      <a href="#projects">Projects</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="search-button" onclick="toggleSearch()">Search</button>
+      <a href="#contact" class="pill-button">Get involved</a>
+      <button class="menu-button" onclick="toggleMenu()">Menu</button>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#teaching" onclick="toggleMenu()">Teaching</a>
+    <a href="#research" onclick="toggleMenu()">Research</a>
+    <a href="#engagement" onclick="toggleMenu()">Engagement</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#resources" onclick="toggleMenu()">Resources</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="fade">
+        <div class="eyebrow">Feminist urbanism · architecture · art psychotherapy</div>
+        <h1>Cities hold<br />women’s stories.<br /><span>We make them visible.</span></h1>
+        <p class="lead">
+          Visible Women, Visible Spaces is a collaborative platform exploring women’s experiences of public open spaces through architecture, participatory mapping, walking methods, creative practice and community engagement.
+        </p>
+        <div class="button-row">
+          <a class="button dark" href="#projects">Explore projects</a>
+          <a class="button" href="#engagement">Workshops</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-dot"></div>
+          <div><strong>Led by Dr May Newisar</strong><br />in collaboration with Artist-Researcher Thahmina Begum</div>
+        </div>
+      </div>
+
+      <div class="hero-collage fade">
+        <div class="collage-map"></div>
+        <img class="logo-stamp" src="ChatGPT Image May 9, 2026, 03_24_27 PM.png" alt="VWVS logo" />
+        <img class="may-portrait" src="ChatGPT Image May 9, 2026, 03_29_20 PM.png" alt="Dr May Newisar" />
+        <img class="community-photo" src="IMG_6409.JPEG" alt="Community workshop with women mapping public spaces" />
+        <div class="hand-note">I avoid this route after dark.</div>
+        <div class="quote-card quote-orange">“Safety is emotional, spatial and deeply personal.”</div>
+        <div class="quote-card quote-yellow">Walking.<br />Mapping.<br />Listening.<br />Reimagining.</div>
+      </div>
+    </section>
+
+    <section class="method-strip">
+      <article><span>01</span><h3>Walking</h3><p>Walking interviews and spatial journeys.</p></article>
+      <article><span>02</span><h3>Mapping</h3><p>Participatory mapping and emotional geographies.</p></article>
+      <article><span>03</span><h3>Making</h3><p>Creative workshops and therapeutic making.</p></article>
+      <article><span>04</span><h3>Listening</h3><p>Women’s stories and lived experiences.</p></article>
+      <article><span>05</span><h3>Analysing</h3><p>Spatial analysis and urban research.</p></article>
+      <article><span>06</span><h3>Reimagining</h3><p>Community-led urban futures.</p></article>
+    </section>
+
+    <section id="about" class="content-section white-section">
+      <div class="section-grid">
+        <div class="fade">
+          <div class="eyebrow">About</div>
+          <h2>Architecture meets art psychotherapy.</h2>
+          <p class="section-copy">
+            Visible Women, Visible Spaces combines architecture, feminist urban research, participatory methods and therapeutic creative practice to explore how women emotionally and spatially experience public space.
+          </p>
+          <div class="note-box">
+            <p class="section-copy">
+              Through workshops, walking conversations, behavioural mapping, storytelling and visual making, women’s lived experiences become part of shaping urban futures.
+            </p>
+          </div>
+        </div>
+
+        <div class="team-grid fade">
+          <article class="team-card">
+            <img src="ChatGPT Image May 9, 2026, 03_29_20 PM.png" alt="Dr May Newisar" />
+            <div class="body">
+              <h3>Dr May Newisar</h3>
+              <div class="role">Architect · Urban Researcher</div>
+              <p>Researching women’s safety, spatial justice, participatory urbanism and public-space governance through architecture and community engagement.</p>
+            </div>
+          </article>
+          <article class="team-card">
+            <img src="22f4e6e7-009f-4e93-bba8-3ea5853c217c.png" alt="Thahmina Begum" />
+            <div class="body">
+              <h3>Thahmina Begum</h3>
+              <div class="role">Artist-Researcher · Art Psychotherapist</div>
+              <p>Mixed-media artist, workshop facilitator and HCPC registered Art Psychotherapist exploring trauma, wellbeing, heritage and community voice.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching" class="content-section dark">
+      <div class="section-heading fade">
+        <div class="eyebrow">Teaching</div>
+        <h2>Teaching through feminist spatial practice.</h2>
+        <p class="section-copy">Teaching and supervision focus on women’s safety, emotional geographies, participatory urbanism and gender-sensitive public-space design.</p>
+      </div>
+      <div class="three-grid">
+        <article class="service-card fade"><span class="number">01</span><h3>Design Studios</h3><p>Spatial justice, inclusive urbanism and community-led public-space interventions.</p></article>
+        <article class="service-card fade"><span class="number">02</span><h3>Student Research</h3><p>Anonymised supervision themes include women’s perceived safety, transport, walkability and feminist spatial analysis.</p></article>
+        <article class="service-card fade"><span class="number">03</span><h3>Live Engagement</h3><p>Workshops, walking interviews and collaborative community-based learning in Leeds neighbourhoods.</p></article>
+      </div>
+    </section>
+
+    <section id="research" class="content-section beige-section">
+      <div class="section-grid">
+        <div class="fade">
+          <div class="eyebrow">Research</div>
+          <h2>Research rooted in women’s lived experiences.</h2>
+          <p class="section-copy">Research combines architecture, behavioural mapping, walking methods, observation and creative engagement to understand how women emotionally and spatially experience public space.</p>
+          <br />
+          <p class="section-copy">The work explores safety, belonging, visibility, identity and inclusivity within everyday urban life.</p>
+        </div>
+        <div class="image-frame fade"><img src="IMG_6402.JPEG" alt="Community safety and danger map of Beeston" /></div>
+      </div>
+    </section>
+
+    <section id="engagement" class="content-section white-section">
+      <div class="section-heading fade">
+        <div class="eyebrow">Engagement</div>
+        <h2>Engagement beyond consultation.</h2>
+        <p class="section-copy">Workshops and public conversations become spaces for storytelling, healing, reflection and collective urban imagination.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project fade"><img src="IMG_6415.JPEG" alt="Creative outputs from women’s workshop" /><div class="body"><span class="number">01</span><h3>Creative workshops</h3><p>Collage, drawing, canvas work and collective making as forms of spatial evidence.</p></div></article>
+        <article class="project fade"><img src="IMG_0688.JPEG" alt="Women walking through Beeston" /><div class="body"><span class="number">02</span><h3>Walking conversations</h3><p>Exploring neighbourhoods through movement, observation and women’s narratives.</p></div></article>
+        <article class="project fade"><img src="IMG_7520.JPEG" alt="Community mapping table" /><div class="body"><span class="number">03</span><h3>Public-space mapping</h3><p>Mapping safety, fear, care, assets and everyday journeys with communities.</p></div></article>
+      </div>
+    </section>
+
+    <section id="projects" class="content-section dark">
+      <div class="section-heading fade">
+        <div class="eyebrow">Projects</div>
+        <h2>Projects rooted in public-space justice.</h2>
+      </div>
+      <div class="project-grid">
+        <article class="project fade"><img src="IMG_6409.JPEG" alt="Women’s safety project workshop" /><div class="body"><span class="number">01</span><h3>Women’s Safety and Security in Public Open Spaces</h3><p>Participatory mapping, walking interviews and workshops exploring women’s experiences of safety in Leeds.</p></div></article>
+        <article class="project fade"><img src="WhatsApp Image 2023-11-06 at 11.20.13 (1).jpeg" alt="Large map with sticky notes" /><div class="body"><span class="number">02</span><h3>Empowering Community-Driven Safety in Beeston</h3><p>Creative and community-led approaches to improving women’s safety and inclusivity in public spaces.</p></div></article>
+        <article class="project fade"><img src="WhatsApp Image 2023-11-06 at 11.20.11 (1).jpeg" alt="Close-up of community safety map" /><div class="body"><span class="number">03</span><h3>Anonymised Student Research Studio</h3><p>Supervised themes include gender-sensitive urban design, safety perception, transport and feminist spatial analysis.</p></div></article>
+      </div>
+    </section>
+
+    <section id="archive" class="content-section beige-section">
+      <div class="section-heading fade">
+        <div class="eyebrow">Visual archive</div>
+        <h2>Workshop traces as evidence.</h2>
+        <p class="section-copy">A living archive of maps, photographs, canvases, stories, route drawings and creative workshop traces.</p>
+      </div>
+      <div class="archive-grid fade">
+        <figure><img src="IMG_6409.JPEG" alt="Workshop table" /><figcaption>Workshop table</figcaption></figure>
+        <figure><img src="IMG_6415.JPEG" alt="Creative outputs" /><figcaption>Creative outputs</figcaption></figure>
+        <figure><img src="WhatsApp Image 2023-11-06 at 11.20.16.jpeg" alt="Canvas artworks" /><figcaption>Canvas artworks</figcaption></figure>
+        <figure><img src="IMG_6402.JPEG" alt="Safety and danger mapping" /><figcaption>Safety mapping</figcaption></figure>
+        <figure><img src="IMG_0688.JPEG" alt="Women walking in Beeston" /><figcaption>Safety walk</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="resources" class="content-section white-section">
+      <div class="section-heading fade">
+        <div class="eyebrow">Resources</div>
+        <h2>Tools for communities, councils and designers.</h2>
+      </div>
+      <div class="resource-grid">
+        <article class="resource fade"><span class="number">01</span><h3>Safety Walk Toolkits</h3><p>Structured prompts for walking, noticing, mapping and reflecting on public-space safety.</p></article>
+        <article class="resource fade"><span class="number">02</span><h3>Participatory Mapping Methods</h3><p>Tools for mapping safety, fear, belonging, care and everyday movement.</p></article>
+        <article class="resource fade"><span class="number">03</span><h3>Community Engagement Guides</h3><p>Creative workshop formats for inclusive conversations and collective action.</p></article>
+        <article class="resource fade"><span class="number">04</span><h3>Research & Publications</h3><p>Reports, academic outputs, talks, policy notes and public-facing resources.</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section contact">
+      <div class="fade">
+        <div class="eyebrow">Contact</div>
+        <h2>Women’s voices should shape cities.</h2>
+        <p class="section-copy">Join workshops, collaborations, public talks and projects exploring women’s experiences of public space.</p>
+        <div class="button-row" style="justify-content:center;"><a class="button dark" href="mailto:info@example.com">Start a conversation</a></div>
+        <p class="section-copy" style="font-size:14px; margin-top:18px;">Replace info@example.com with your project email before publishing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="ChatGPT Image May 9, 2026, 03_24_27 PM.png" alt="VWVS logo" />
+      <div>Visible Women<br />Visible Spaces</div>
+    </div>
+    <p>Architecture · Art Psychotherapy · Feminist Urbanism · Community Action</p>
+  </footer>
+
+  <script>
+    function toggleSearch() {
+      document.getElementById("searchPanel").classList.toggle("open");
+      setTimeout(() => {
+        const input = document.getElementById("searchInput");
+        if (document.getElementById("searchPanel").classList.contains("open")) input.focus();
+      }, 100);
+    }
+
+    function toggleMenu() {
+      document.getElementById("mobilePanel").classList.toggle("open");
+    }
+
+    const fades = document.querySelectorAll(".fade");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.16 });
+    fades.forEach(el => observer.observe(el));
+
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    const searchIndex = [
+      "About: architecture meets art psychotherapy",
+      "Teaching: feminist spatial practice, student research, design studios",
+      "Research: women’s lived experiences, behavioural mapping, walking methods",
+      "Engagement: creative workshops, walking conversations, public-space mapping",
+      "Projects: Women’s Safety and Security in Public Open Spaces",
+      "Projects: Empowering Community-Driven Safety in Beeston",
+      "Resources: Safety Walk Toolkits, Participatory Mapping Methods, Community Engagement Guides",
+      "Visual archive: workshop traces, maps, canvases, safety walks"
+    ];
+
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.toLowerCase().trim();
+      if (!q) {
+        searchResults.innerHTML = "Try searching: safety, Beeston, mapping, workshops, teaching, research, resources.";
+        return;
+      }
+      const results = searchIndex.filter(item => item.toLowerCase().includes(q));
+      if (results.length === 0) {
+        searchResults.innerHTML = "No exact match found. Try another keyword such as safety, mapping, workshops or Beeston.";
+        return;
+      }
+      searchResults.innerHTML = results.map(r => `<div style="padding:10px 0;border-bottom:1px solid rgba(0,0,0,.1);">${r}</div>`).join("");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        document.getElementById("searchPanel").classList.remove("open");
+        document.getElementById("mobilePanel").classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>
